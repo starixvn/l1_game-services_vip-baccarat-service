@@ -80,7 +80,7 @@ export default class Bot extends Table.TableGameBot {
 
         if (this.playerBankerOpts.includes(choice) || this.bigSmallOpts.includes(choice)) {
             const isSmallTicket = this.totalTickets === 0 ? true : (this.smallTickets * 100) / this.totalTickets < this.smallTicketRatio;
-            const maxBetOfSmallTicket = minBet * 50;
+            const maxBetOfSmallTicket = Math.min(minBet * 50, botMaxBet * 0.3);
             return isSmallTicket ? maxBetOfSmallTicket : maxBet;
         }
 

@@ -1,5 +1,5 @@
 export default {
-    id: 28,
+    id: 27,
     name: "VipBaccarat",
     durations: {
         wholeRound: 45,
