@@ -4,6 +4,8 @@ import { Table } from "sc-game-base";
 import appConfigs from "./app-configs";
 import BaccaratGame from "./baccarat-game";
 import * as BaseCard from "./card";
+import { SettleGameRoundConsumer } from "./consumers";
+import { Bot } from "./crons";
 import gameSettings from "./game-settings";
 import * as models from "./models";
 
@@ -118,7 +120,15 @@ const run = async () => {
         models.tmpBets,
         null
     );
-    const app = new Table.TableGameApp(appConfigs, definition, gameData);
+
+    const gameCron = new Table.TableGameCron(
+        definition,
+        gameData,
+        new Bot(definition, gameData),
+        new SettleGameRoundConsumer(definition, gameData)
+    );
+    const startup = new Table.TableGameStartup(appConfigs, definition, gameData, gameCron);
+    const app = new Table.TableGameApp(appConfigs, definition, gameData, startup);
 
     await app.run();
 };

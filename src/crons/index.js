@@ -1,3 +1,3 @@
-import GameCron from "./game-cron";
+import Bot from "./bot";
 
-export { GameCron };
+export { Bot };
