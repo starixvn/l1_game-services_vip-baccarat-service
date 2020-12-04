@@ -1,4 +1,4 @@
-let card = [
+const card = [
     {
         card: 0,
         type: 0,
@@ -208,7 +208,7 @@ let card = [
         type: 3,
     },
 ];
-let name = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-let type = ["♥", "♦", "♣", "♠"];
+const name = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+const type = ["♥", "♦", "♣", "♠"];
 
 export { card, name, type };
