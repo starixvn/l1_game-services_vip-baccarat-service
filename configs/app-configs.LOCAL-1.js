@@ -11,7 +11,7 @@ export default {
         useAuthenticate: true,
         requestTimeout: 10000,
         placeBetTimeout: 4500,
-        enableApiLogs: true,
+        enabledApiLogs: true,
     },
     mainServerApiSettings: {
         url: "http://haproxy.lumigame.com:7002/main/api",
@@ -49,6 +49,6 @@ export default {
         audiences: ["api", "admin-api"],
     },
     adminSecretKey: "asWDEerfOIdgsdqRTFabvmgh",
-    enableCorsWs: false,
+    enableCorsWs: true,
     corsUrls: ["http://localhost:7456", "http://localhost:7000", "http://l1-games1.lumigame.com", "http://l1-admin1.lumigame.com"],
 };

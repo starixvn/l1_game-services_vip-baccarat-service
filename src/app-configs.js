@@ -11,7 +11,7 @@ export default {
         useAuthenticate: true,
         requestTimeout: 10000,
         placeBetTimeout: 4500,
-        enableApiLogs: true,
+        enabledApiLogs: true,
     },
     mainServerApiSettings: {
         url: "http://localhost:8080/api",
