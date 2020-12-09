@@ -1,5 +1,6 @@
 import { Table } from "sc-game-base";
 
+import constants from "../constants";
 import { BaccaratGame, resultHelper } from "../helpers";
 
 export default class SettleGameRoundConsumer extends Table.EventConsumers.SettleGameRoundConsumer {
@@ -10,6 +11,14 @@ export default class SettleGameRoundConsumer extends Table.EventConsumers.Settle
             .filter(([choice, win]) => choices.includes(choice))
             .reduce(
                 (result, [choice, win]) => {
+                    if (choice === constants.choiceNames.tie) {
+                        const playerBet = bet[choiceNames.player] ?? 0;
+                        const bankerBet = bet[choiceNames.banker] ?? 0;
+                        const refund = playerBet + bankerBet;
+
+                        result.totalWin += refund;
+                    }
+
                     const betAmount = bet[choice];
                     const originalOdds = odds[choice] || 1;
                     const effectiveOdds = bet.freeBet ? originalOdds - 1 : originalOdds;
