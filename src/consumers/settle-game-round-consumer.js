@@ -11,7 +11,7 @@ export default class SettleGameRoundConsumer extends Table.EventConsumers.Settle
             .filter(([choice, win]) => choices.includes(choice))
             .reduce(
                 (result, [choice, win]) => {
-                    if (choice === constants.choiceNames.tie) {
+                    if (choice === constants.choiceNames.tie && win) {
                         const playerBet = bet[constants.choiceNames.player] ?? 0;
                         const bankerBet = bet[constants.choiceNames.banker] ?? 0;
                         const refund = playerBet + bankerBet;
