@@ -15,8 +15,8 @@ export default class Bot extends Table.TableGameBot {
         this.bigSmallOpts = ["big", "small"];
     }
 
-    async resetAllBotData() {
-        await super.resetAllBotData();
+    resetAllBotData() {
+        super.resetAllBotData();
         this.resetAllBets();
     }
 
