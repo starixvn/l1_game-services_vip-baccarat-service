@@ -16,7 +16,7 @@ export default {
     mainServerApiSettings: {
         url: "http://10.2.189.50:8888/main/api",
         auth: {
-            url: "http://10.2.189.51:7303",
+            url: "http://10.2.189.50:8303",
             id: "game-services",
             secret: "gameservices@20luminet&",
         },
