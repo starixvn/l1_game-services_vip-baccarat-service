@@ -1,6 +1,6 @@
 variables:
   SERVICE_WORKING_PATH: /l1/vip-baccarat-service/
-  SERVICE_NAME: l1/vip-baccarat-service
+  SERVICE_NAME: l1-vip-baccarat-service
   DOCKER_IMAGE_PATH: l1/game-services/vip-baccarat-service
   
 include:
