@@ -3,7 +3,7 @@ import { Table } from "sc-game-base";
 import constants from "../constants";
 import { BaccaratGame, resultHelper } from "../helpers";
 
-export default class SettleGameRoundConsumer extends Table.EventConsumers.SettleGameRoundConsumer {
+export default class SettleGameRoundConsumer extends Table.EventConsumers.TableSettleGameRoundConsumer {
     calculateBetResult(settlementResult, bet, odds) {
         const { choices } = this.definition;
 
