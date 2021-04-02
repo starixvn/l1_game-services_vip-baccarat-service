@@ -2,21 +2,21 @@ export default {
     hostingPort: 5000,
     apiSettings: {
         enabledApi: true,
-        apiUrl: "http://10.2.189.51:7310",
-        authUrl: "http://10.2.189.51:7313",
+        apiUrl: "http://l2_game_api_uat:5000",
+        authUrl: "http://l2_auth_api_uat:5000",
         client: {
             id: "game-server",
             secret: "gameserver@20luminet&",
         },
         useAuthenticate: true,
         placeBetTimeout: 4500,
-        requestTimeout: 10000, // 10s
+        requestTimeout: 10000,
         enabledApiLogs: true,
     },
     mainServerApiSettings: {
-        url: "http://10.2.189.51:7778/uat/main/api",
+        url: "http://l2_games_server_uat:5000/api",
         auth: {
-            url: "http://10.2.189.51:7313",
+            url: "http://l2_auth_api_uat:5000",
             id: "game-services",
             secret: "gameservices@20luminet&",
         },
