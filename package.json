@@ -18,6 +18,7 @@
         "reg": "npm set registry http://npm.lumigame.com"
     },
     "dependencies": {
+        "nodemon": "^2.0.4",
         "sc-game-base": "1.19.1-beta.6"
     },
     "devDependencies": {

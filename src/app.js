@@ -1,4 +1,4 @@
-import { Table } from "sc-game-base";
+import { Core, Table } from "sc-game-base";
 
 import appConfigs from "./app-configs";
 import gameSettings from "./game-settings";
