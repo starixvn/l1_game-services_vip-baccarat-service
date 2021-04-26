@@ -42,7 +42,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "http://df29b7394d4442d5b4126e599d4318b2@10.99.99.187:803/128",
+        sentryUrl: "http://2b5b82bf699543ddb296364568bc30be@10.99.99.187:803/52",
         logIdentifier: "vip-baccarat",
         env: "PROD",
     },

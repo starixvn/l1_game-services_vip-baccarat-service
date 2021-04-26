@@ -41,7 +41,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "http://628b0a41ebcf4661b567766f4d0be139@10.99.99.187:800/212",
+        sentryUrl: "http://8ac47fca6d3e4a41908896a64ef201ac@10.99.99.187:800/53",
         logIdentifier: "vip-baccarat",
         env: "UAT",
     },
