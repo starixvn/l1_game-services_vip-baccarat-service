@@ -42,7 +42,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "https://5989e006e7ac4bf89226dc70490a9ce8@sentryuat.sabagame.com/173",
+        sentryUrl: "https://13f39b8359404ed5aec23655e64ccf78@sentry.lumigame.com/2",
         logIdentifier: "vip-baccarat",
         env: "LOCAL",
     },

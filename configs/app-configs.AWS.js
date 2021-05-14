@@ -42,7 +42,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "http://7d8076ccce2f427baed99e1ed0c5d65f@10.99.99.187:803/124",
+        sentryUrl: "http://58fc00e79ab34a3bab04a79038760cb8@sentry.sabagame.com/8",
         logIdentifier: "vip-baccarat",
         env: "AWS",
     },

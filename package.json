@@ -20,7 +20,7 @@
     "dependencies": {
         "chance": "^1.1.7",
         "nodemon": "^2.0.4",
-        "sc-game-base": "1.20.0"
+        "sc-game-base": "1.21.2-beta.8"
     },
     "devDependencies": {
         "@commitlint/cli": "^9.1.2",
