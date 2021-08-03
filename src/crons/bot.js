@@ -1,4 +1,3 @@
-import { randomBytes } from "crypto";
 import { helpers } from "sc-common";
 import { Table } from "sc-game-base";
 
@@ -89,8 +88,7 @@ export default class Bot extends Table.Crons.TableGameBot {
     }
 
     getRandomChoiceFromGroup(group) {
-        const randomIndex = (randomBytes(1) * group.length) >> 0;
-        return group[randomIndex];
+        return this.chance.pickone(group);
     }
 
     getTotalAmountOnChoiceGroup(choices) {
