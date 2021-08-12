@@ -21,7 +21,7 @@ export default class SettleGameRoundConsumer extends Table.EventConsumers.TableS
 
                     const betAmount = bet[choice];
                     const originalOdds = odds[choice] || 1;
-                    const effectiveOdds = bet.freeBet ? originalOdds - 1 : originalOdds;
+                    const effectiveOdds = originalOdds;
                     const winAmount = win ? betAmount * effectiveOdds : 0;
 
                     result.totalBetAmount += betAmount;
