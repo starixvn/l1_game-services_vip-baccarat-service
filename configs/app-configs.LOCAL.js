@@ -51,5 +51,13 @@ export default {
     },
     adminSecretKey: "asWDEerfOIdgsdqRTFabvmgh",
     enableCorsWs: true,
-    corsUrls: ["http://localhost:7456", "https://l2-games.lumigame.com", "https://l2-admin.lumigame.com", "http://localhost:7000"],
+    corsUrls: [
+        "http://localhost:7456",
+        "http://localhost:7000",
+        "http://localhost:3000",
+        "https://l2-games.lumigame.com",
+        "https://l2-admin.lumigame.com",
+        "http://l2-m.lumigame.com",
+        "https://l2-m.lumigame.com",
+    ],
 };
