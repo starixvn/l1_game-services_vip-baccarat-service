@@ -60,6 +60,12 @@ export default {
         "https://sit-adm.sabagame.com",
         "http://sitm.sabagame.com",
         "https://sitm.sabagame.com",
+        "http://l1sitadm.sgamesuat.com",
+        "https://l1sitadm.sgamesuat.com",
+        "http://l1sitm.sgamesuat.com",
+        "https://l1sitm.sgamesuat.com",
+        "http://l1sit.sgamesuat.com",
+        "https://l1sit.sgamesuat.com",
     ],
     metrics: {
         enable: true,
