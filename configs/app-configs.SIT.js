@@ -59,5 +59,11 @@ export default {
         "https://sitadm.v-gaming.net",
         "http://msit.v-gaming.net",
         "https://msit.v-gaming.net",
+        "http://l2sitadm.sgamesuat.com",
+        "https://l2sitadm.sgamesuat.com",
+        "http://l2sit.sgamesuat.com",
+        "https://l2sit.sgamesuat.com",
+        "http://l2sitm.sgamesuat.com",
+        "https://l2sitm.sgamesuat.com",
     ],
 };
