@@ -10,9 +10,9 @@ const run = async () => {
     const gameData = new Table.TableGameData(gameSettings.durations.wholeRound);
 
     const container = new VipBaccaratContainerRegistry().register(appConfigs, definition, gameData);
-    const app = new Core.BaseGameApp(container);
-
+    const app = new Core.BaseGameApp("VipBaccarat", appConfigs);
     await app.run();
+    await app.startGame(container);
 };
 
 run();
