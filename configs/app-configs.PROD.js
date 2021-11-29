@@ -64,5 +64,9 @@ export default {
         "https://admg.v-gaming.net",
         "http://adm.v-gaming.net",
         "https://adm.v-gaming.net",
+        "http://m.v-gaming.net",
+        "https://m.v-gaming.net",
+        "http://m2.v-gaming.net",
+        "https://m2.v-gaming.net",
     ],
 };
