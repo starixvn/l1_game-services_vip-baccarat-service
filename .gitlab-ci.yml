@@ -1,3 +1,6 @@
+variables:
+  SMOKE_PRODUCT_NAME: VipBaccarat
+
 include:
   - project: "ci/repos-ci/pentagon_l1_vip_baccarat_service"
     ref: master
