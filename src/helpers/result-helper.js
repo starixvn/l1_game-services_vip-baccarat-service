@@ -2,6 +2,7 @@ import Chance from "chance";
 
 import BaccaratGame from "./baccarat-game";
 import * as BaseCard from "./card";
+import { getCardValue } from "./card-helper";
 
 const getCards = () => {
     let cards = [...BaseCard.card];
@@ -24,9 +25,7 @@ const generateResult = () => {
         baccaratGame[action]();
     } while (action !== BaccaratGame.Actions.finalComparison);
 
-    const result = { player: baccaratGame.player, banker: baccaratGame.banker };
-
-    return result;
+    return { player: baccaratGame.player, banker: baccaratGame.banker };
 };
 
 const settlementRuleEntries = Object.entries({
@@ -67,21 +66,6 @@ const getTotalScore = (handResult) => {
 
         return (result + cardValue) % 10;
     }, 0);
-};
-
-const getCardValue = (card) => {
-    if (card == null) {
-        return 0;
-    }
-
-    let cardValue = card.card + 1;
-
-    if (cardValue >= 10) {
-        // Card 10, J, Q, K
-        cardValue = 0;
-    }
-
-    return cardValue;
 };
 
 const getNumberOfCards = (handResult) => {
