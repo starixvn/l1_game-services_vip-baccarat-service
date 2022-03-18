@@ -86,4 +86,10 @@ const getSettlementResult = (roundResult) => {
     }, {});
 };
 
-export { getCards, generateResult, getSettlementResult };
+const generateRawResultForMd5 = (roundResult) => {
+    const thirdBankerCard = roundResult.banker.card3 ? ` ${roundResult.banker.card3.card}` : "";
+    const thirdPlayerCard = roundResult.player.card3 ? ` ${roundResult.player.card3.card}` : "";
+    return `{${roundResult.banker.card1.card} ${roundResult.banker.card2.card}${thirdBankerCard}, ${roundResult.player.card1.card} ${roundResult.player.card2.card}${thirdPlayerCard}}`;
+};
+
+export { getCards, generateResult, getSettlementResult, generateRawResultForMd5 };
