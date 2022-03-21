@@ -87,9 +87,18 @@ const getSettlementResult = (roundResult) => {
 };
 
 const generateRawResultForMd5 = (roundResult) => {
-    const thirdBankerCard = roundResult.banker.card3 ? ` ${roundResult.banker.card3.card}` : "";
-    const thirdPlayerCard = roundResult.player.card3 ? ` ${roundResult.player.card3.card}` : "";
-    return `{${roundResult.banker.card1.card} ${roundResult.banker.card2.card}${thirdBankerCard}, ${roundResult.player.card1.card} ${roundResult.player.card2.card}${thirdPlayerCard}}`;
+    let rawResult = "{";
+    rawResult +=
+        Object.values(roundResult.player)
+            .filter((card) => card)
+            .map((card) => BaseCard.name[card.card])
+            .join(" ") + ",";
+    rawResult +=
+        Object.values(roundResult.banker)
+            .filter((card) => card)
+            .map((card) => BaseCard.name[card.card])
+            .join(" ") + "}";
+    return rawResult;
 };
 
 export { getCards, generateResult, getSettlementResult, generateRawResultForMd5 };

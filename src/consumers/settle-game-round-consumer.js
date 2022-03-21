@@ -49,25 +49,4 @@ export default class SettleGameRoundConsumer extends Table.EventConsumers.TableS
 
         return betResult;
     }
-
-    generateResult() {
-        const resultFromAdmin = this.gameData.settlementResultFromAdmin;
-
-        if (this.gameData.roundId === resultFromAdmin.roundId) {
-            const cards = resultHelper.getCards();
-            const baccaratGame = new BaccaratGame(cards);
-            baccaratGame.setResult(resultFromAdmin.result);
-
-            let action = "";
-
-            do {
-                action = baccaratGame.getAction();
-                baccaratGame[action]();
-            } while (action !== BaccaratGame.Actions.finalComparison);
-
-            return { player: baccaratGame.player, banker: baccaratGame.banker };
-        } else {
-            return this.definition.generateResult();
-        }
-    }
 }

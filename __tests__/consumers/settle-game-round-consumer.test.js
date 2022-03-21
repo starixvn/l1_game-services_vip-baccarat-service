@@ -40,37 +40,6 @@ describe("SettleGameRoundConsumer tests", () => {
         expect(consumer instanceof Table.EventConsumers.TableSettleGameRoundConsumer).toBeTruthy();
     });
 
-    describe("generateResult_", () => {
-        it("_setResult from admin_doesn't call definition.generateResult", () => {
-            gameData.roundId = 100;
-            gameData.settlementResultFromAdmin = {
-                roundId: 100,
-                result: {
-                    player: [
-                        { card: 1, type: 0 },
-                        { card: 5, type: 1 },
-                    ],
-                    banker: [
-                        { card: 1, type: 0 },
-                        { card: 3, type: 1 },
-                    ],
-                },
-            };
-
-            consumer.generateResult();
-
-            expect(definition.generateResult).not.toHaveBeenCalled();
-        });
-
-        it("_auto generateResult_calls definition.generateResult", () => {
-            gameData.settlementResultFromAdmin = {};
-
-            consumer.generateResult();
-
-            expect(definition.generateResult).toHaveBeenCalled();
-        });
-    });
-
     describe("_settleRound", () => {
         beforeEach(() => {
             spyOn(consumer, "settleBets");
