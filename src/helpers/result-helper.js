@@ -91,12 +91,12 @@ const generateRawResultForMd5 = (roundResult) => {
     rawResult +=
         Object.values(roundResult.player)
             .filter((card) => card)
-            .map((card) => BaseCard.name[card.card])
+            .map((card) => `${BaseCard.name[card.card]}${BaseCard.type[card.type]}`)
             .join(" ") + ",";
     rawResult +=
         Object.values(roundResult.banker)
             .filter((card) => card)
-            .map((card) => BaseCard.name[card.card])
+            .map((card) => `${BaseCard.name[card.card]}${BaseCard.type[card.type]}`)
             .join(" ") + "}";
     return rawResult;
 };
