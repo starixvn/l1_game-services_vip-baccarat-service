@@ -40,37 +40,6 @@ describe("SettleGameRoundConsumer tests", () => {
         expect(consumer instanceof Table.EventConsumers.TableSettleGameRoundConsumer).toBeTruthy();
     });
 
-    describe("_settleRound", () => {
-        beforeEach(() => {
-            spyOn(consumer, "settleBets");
-        });
-        it("_create round successful_calls settleBets", () => {
-            // arrange
-            roundsRepository.create = jest.fn(() => {
-                return { id: 1, time: Date.now() };
-            });
-
-            // act
-            consumer.settleRound();
-
-            // assert
-            expect(roundsRepository.create).toHaveBeenCalled();
-        });
-
-        it("_create round failed_doesn't call settleBets", () => {
-            // arrange
-            roundsRepository.create = jest.fn(() => {
-                return null;
-            });
-
-            // act
-            consumer.settleRound();
-
-            // assert
-            expect(consumer.settleBets).not.toHaveBeenCalled();
-        });
-    });
-
     describe("_calculateBetResult", () => {
         it("_always_returns correct result", () => {
             const settlementResult = {

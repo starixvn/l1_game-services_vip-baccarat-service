@@ -1,9 +1,12 @@
 import { Table } from "sc-game-base";
-
 import constants from "../constants";
-import { BaccaratGame, resultHelper } from "../helpers";
 
 export default class SettleGameRoundConsumer extends Table.EventConsumers.TableSettleGameRoundConsumer {
+    generateResult() {
+        const result = this.gameData.result || this.definition.generateResult();
+        return { player: result.player, banker: result.banker };
+    }
+
     calculateBetResult(settlementResult, bet, odds) {
         const { choices } = this.definition;
 

@@ -17,7 +17,7 @@ const getCards = () => {
 
 const generateResult = () => {
     const cards = getCards();
-    const baccaratGame = new BaccaratGame(cards);
+    const baccaratGame = new BaccaratGame([...cards]);
     let action = "";
 
     do {
@@ -25,7 +25,7 @@ const generateResult = () => {
         baccaratGame[action]();
     } while (action !== BaccaratGame.Actions.finalComparison);
 
-    return { player: baccaratGame.player, banker: baccaratGame.banker };
+    return { player: baccaratGame.player, banker: baccaratGame.banker, cards: cards.slice(0, 6) };
 };
 
 const settlementRuleEntries = Object.entries({
@@ -86,19 +86,10 @@ const getSettlementResult = (roundResult) => {
     }, {});
 };
 
-const generateRawResultForMd5 = (roundResult) => {
+const generateRawResultForHash = ({ cards }) => {
     let rawResult = "{";
-    rawResult +=
-        Object.values(roundResult.player)
-            .filter((card) => card)
-            .map((card) => `${BaseCard.name[card.card]}${BaseCard.type[card.type]}`)
-            .join(" ") + ",";
-    rawResult +=
-        Object.values(roundResult.banker)
-            .filter((card) => card)
-            .map((card) => `${BaseCard.name[card.card]}${BaseCard.type[card.type]}`)
-            .join(" ") + "}";
+    rawResult += cards.map((card) => `${BaseCard.name[card.card]}${BaseCard.type[card.type]}`).join(" ") + "}";
     return rawResult;
 };
 
-export { getCards, generateResult, getSettlementResult, generateRawResultForMd5 };
+export { getCards, generateResult, getSettlementResult, generateRawResultForHash };

@@ -10,7 +10,7 @@ const run = async () => {
         gameSettings,
         resultHelper.generateResult,
         resultHelper.getSettlementResult,
-        resultHelper.generateRawResultForMd5
+        resultHelper.generateRawResultForHash
     );
     const gameData = new Table.TableGameData(gameSettings.durations.wholeRound);
 

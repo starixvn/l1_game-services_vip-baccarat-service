@@ -1,7 +1,7 @@
 import awilix from "awilix";
 import { Table } from "sc-game-base";
 import { SettleGameRoundConsumer, RoundResultConsumer } from "./consumers";
-import { bets, rounds, tmpBets, md5s } from "./models/index";
+import { bets, rounds, tmpBets, results } from "./models/index";
 import { Bot } from "./crons/index";
 
 const { asClass, asValue } = awilix;
@@ -14,7 +14,7 @@ export default class VipBaccaratContainerRegistry extends Table.TableContainerRe
             roundsRepository: asValue(rounds),
             betsRepository: asValue(bets),
             tempBetsRepository: asValue(tmpBets),
-            md5sRepository: asValue(md5s),
+            resultsRepository: asValue(results),
         });
     }
 
