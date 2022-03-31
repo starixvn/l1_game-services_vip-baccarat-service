@@ -58,4 +58,78 @@ describe("SettleGameRoundConsumer tests", () => {
             expect(result.winningByChoices.tie).toEqual(100);
         });
     });
+
+    describe("generateResult", () => {
+        describe("when result in gameData is not null", () => {
+            const cards = [
+                { card: 0, type: 0 },
+                { card: 10, type: 1 },
+                { card: 8, type: 2 },
+                { card: 7, type: 3 },
+                { card: 7, type: 1 },
+                { card: 9, type: 2 },
+            ];
+            beforeEach(() => {
+                consumer.gameData.result = {
+                    player: { card1: cards[0], card2: cards[2], card3: null },
+                    banker: { card1: cards[1], card2: cards[3], card3: null },
+                    cards,
+                };
+                consumer.definition.generateResult = jest.fn();
+            });
+            it("should not call generateResult from definition", () => {
+                // act
+                consumer.generateResult();
+
+                // assert
+                expect(definition.generateResult).not.toHaveBeenCalled();
+            });
+            it("should return expected", () => {
+                // act
+                const actual = consumer.generateResult();
+
+                // assert
+                expect(actual).toStrictEqual({
+                    player: gameData.result.player,
+                    banker: gameData.result.banker,
+                });
+            });
+        });
+
+        describe("when result in gameData is null", () => {
+            const cards = [
+                { card: 0, type: 0 },
+                { card: 10, type: 1 },
+                { card: 8, type: 2 },
+                { card: 7, type: 3 },
+                { card: 7, type: 1 },
+                { card: 9, type: 2 },
+            ];
+            beforeEach(() => {
+                consumer.gameData.result = null;
+                consumer.definition.generateResult = jest.fn().mockReturnValueOnce({
+                    player: { card1: cards[0], card2: cards[2], card3: null },
+                    banker: { card1: cards[1], card2: cards[3], card3: null },
+                    cards,
+                });
+            });
+            it("should generate new result from definition", () => {
+                // act
+                consumer.generateResult();
+
+                // assert
+                expect(definition.generateResult).toHaveBeenCalled();
+            });
+            it("should return expected", () => {
+                // act
+                const actual = consumer.generateResult();
+
+                // assert
+                expect(actual).toStrictEqual({
+                    player: { card1: cards[0], card2: cards[2], card3: null },
+                    banker: { card1: cards[1], card2: cards[3], card3: null },
+                });
+            });
+        });
+    });
 });
