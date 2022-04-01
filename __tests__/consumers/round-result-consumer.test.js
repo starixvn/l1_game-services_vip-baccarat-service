@@ -1,9 +1,11 @@
 import { RoundResultConsumer } from "../../src/consumers";
 import { RoundResultConsumer as BaseRoundResultConsumer } from "sc-game-base/src/core/event-consumers";
 import BaccaratPlayer from "../../src/helpers/baccarat-player";
+import * as resultHelper from "../../src/helpers/result-helper";
 
+jest.mock("../../src/helpers/result-helper");
 describe("RoundResultConsumer test", () => {
-    it("inherit  BaseRoundResultConsumer", () => {
+    it("inherit BaseRoundResultConsumer", () => {
         // act
         const consumer = new RoundResultConsumer();
 
@@ -32,6 +34,17 @@ describe("RoundResultConsumer test", () => {
                     },
                 },
             };
+            const tempCards = [
+                { card: 10, type: 2 },
+                { card: 2, type: 2 },
+                { card: 10, type: 0 },
+                { card: 9, type: 1 },
+                { card: 8, type: 2 },
+                { card: 7, type: 3 },
+            ];
+            beforeEach(() => {
+                resultHelper.getCards.mockReturnValue([...tempCards]);
+            });
             it("should return result from admin", () => {
                 // arrange
                 const consumer = new RoundResultConsumer(gameData);
@@ -39,12 +52,20 @@ describe("RoundResultConsumer test", () => {
                 player.setCards(gameData.settlementResultFromAdmin.result.player);
                 const banker = new BaccaratPlayer();
                 banker.setCards(gameData.settlementResultFromAdmin.result.banker);
+                const cards = [
+                    { card: 11, type: 2 },
+                    { card: 5, type: 1 },
+                    { card: 3, type: 0 },
+                    { card: 9, type: 2 },
+                    { card: 6, type: 1 },
+                    { card: 3, type: 2 },
+                ];
 
                 // act
                 const actual = consumer.generateResult();
 
                 // assert
-                expect(actual).toStrictEqual({ player, banker });
+                expect(actual).toStrictEqual({ player, banker, cards });
             });
 
             it("should not call generateResult from definition", () => {
@@ -57,6 +78,51 @@ describe("RoundResultConsumer test", () => {
 
                 // assert
                 expect(definition.generateResult).not.toHaveBeenCalled();
+            });
+
+            describe("when result from admin with 4 cards", () => {
+                beforeEach(() => {
+                    gameData.settlementResultFromAdmin.result = {
+                        player: [
+                            { card: 9, type: 2 },
+                            { card: 12, type: 3 },
+                        ],
+                        banker: [
+                            { card: 9, type: 0 },
+                            { card: 7, type: 1 },
+                        ],
+                    };
+                });
+
+                it("should return 6 cards", () => {
+                    // arrange
+                    const consumer = new RoundResultConsumer(gameData);
+
+                    // act
+                    const actual = consumer.generateResult();
+
+                    // assert
+                    expect(actual.cards).toBeArrayOfSize(6);
+                });
+
+                it("should return expected cards", () => {
+                    // arrange
+                    const consumer = new RoundResultConsumer(gameData);
+                    const cards = [
+                        { card: 9, type: 2 },
+                        { card: 9, type: 0 },
+                        { card: 12, type: 3 },
+                        { card: 7, type: 1 },
+                        { card: 10, type: 2 },
+                        { card: 2, type: 2 },
+                    ];
+
+                    // act
+                    const actual = consumer.generateResult();
+
+                    // assert
+                    expect(actual.cards).toStrictEqual(cards);
+                });
             });
         });
 

@@ -7,8 +7,8 @@ export default class RoundResultConsumer extends BaseRoundResultConsumer {
         const resultFromAdmin = this.gameData.settlementResultFromAdmin;
 
         if (roundId === resultFromAdmin.roundId) {
-            const cards = resultHelper.getCards();
-            const baccaratGame = new BaccaratGame(cards);
+            const tmpCards = resultHelper.getCards();
+            const baccaratGame = new BaccaratGame([...tmpCards]);
             baccaratGame.setResult(resultFromAdmin.result);
 
             let action = "";
@@ -18,7 +18,13 @@ export default class RoundResultConsumer extends BaseRoundResultConsumer {
                 baccaratGame[action]();
             } while (action !== BaccaratGame.Actions.finalComparison);
 
-            return { player: baccaratGame.player, banker: baccaratGame.banker };
+            const cards = [];
+            [1, 2, 3].forEach((index) => {
+                cards.push(baccaratGame.player[`card${index}`] || tmpCards.shift());
+                cards.push(baccaratGame.banker[`card${index}`] || tmpCards.shift());
+            });
+
+            return { player: baccaratGame.player, banker: baccaratGame.banker, cards };
         } else {
             return this.definition.generateResult();
         }
