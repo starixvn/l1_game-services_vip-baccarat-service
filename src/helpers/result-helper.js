@@ -1,22 +1,17 @@
-import Chance from "chance";
-
 import BaccaratGame from "./baccarat-game";
 import * as BaseCard from "./card";
 import { getCardValue } from "./card-helper";
+import { shuffle } from "./shuffle-helper";
 
-const getCards = () => {
+const getCards = (randomMode = 1) => {
     let cards = [...BaseCard.card];
-    const chance = new Chance();
-
-    cards = chance.shuffle(cards);
-    cards = chance.shuffle(cards);
-    cards = chance.shuffle(cards);
-
+    cards = shuffle[randomMode](cards);
     return cards;
 };
 
-const generateResult = () => {
-    const cards = getCards();
+const generateResult = (mode) => {
+    const selectedMode = mode >= 1 && mode <= 3 ? mode : 1;
+    const cards = getCards(selectedMode);
     const baccaratGame = new BaccaratGame([...cards]);
     let action = "";
 
