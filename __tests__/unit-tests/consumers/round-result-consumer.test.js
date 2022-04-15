@@ -1,9 +1,9 @@
-import RoundResultConsumer from "../../src/consumers/round-result-consumer";
+import RoundResultConsumer from "../../../src/consumers/round-result-consumer";
 import { RoundResultConsumer as BaseRoundResultConsumer } from "sc-game-base/src/core/event-consumers";
-import BaccaratPlayer from "../../src/helpers/baccarat-player";
-import * as resultHelper from "../../src/helpers/result-helper";
+import BaccaratPlayer from "../../../src/helpers/baccarat-player";
+import * as resultHelper from "../../../src/helpers/result-helper";
 
-jest.mock("../../src/helpers/result-helper");
+jest.mock("../../../src/helpers/result-helper");
 describe("RoundResultConsumer test", () => {
     it("inherit BaseRoundResultConsumer", () => {
         // act

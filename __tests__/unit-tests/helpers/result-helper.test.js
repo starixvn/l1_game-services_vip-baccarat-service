@@ -1,6 +1,6 @@
-import BaccaratPlayer from "../../src/helpers/baccarat-player";
-import { generateResult, getSettlementResult, generateRawResultForHash, getCards } from "../../src/helpers/result-helper";
-import * as BaseCard from "../../src/helpers/card";
+import BaccaratPlayer from "../../../src/helpers/baccarat-player";
+import { generateResult, getSettlementResult, generateRawResultForHash, getCards } from "../../../src/helpers/result-helper";
+import * as BaseCard from "../../../src/helpers/card";
 
 describe("result-helper test", () => {
     describe("getCards", () => {

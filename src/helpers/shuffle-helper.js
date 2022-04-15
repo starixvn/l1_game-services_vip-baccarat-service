@@ -1,8 +1,9 @@
 import Chance from "chance";
 import { randomInt } from "crypto";
+const chance = new Chance();
 
 const random1 = (array) => {
-    return Math.floor(Math.random() * array.length);
+    return chance.integer({ min: 0, max: array.length - 1 });
 };
 
 const random2 = (array) => {
@@ -15,7 +16,6 @@ const random = {
 };
 
 const shuffle1 = (array) => {
-    const chance = new Chance();
     array = chance.shuffle(array);
     array = chance.shuffle(array);
     array = chance.shuffle(array);

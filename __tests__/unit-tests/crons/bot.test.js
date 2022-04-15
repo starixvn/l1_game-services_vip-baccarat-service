@@ -2,8 +2,8 @@ import { stub, stubMongooseModelStupidly } from "jest-micro-auto-stub";
 import mongoose from "mongoose";
 import { Core, Table } from "sc-game-base";
 
-import Bot from "../../src/crons/bot";
-import gameSettings from "../../src/game-settings";
+import Bot from "../../../src/crons/bot";
+import gameSettings from "../../../src/game-settings";
 
 describe("bot test", () => {
     const definition = new Table.TableGameDefinition(gameSettings);

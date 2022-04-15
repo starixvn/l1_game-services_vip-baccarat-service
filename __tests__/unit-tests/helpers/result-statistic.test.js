@@ -1,4 +1,4 @@
-import { generateResult, getSettlementResult } from "../../src/helpers/result-helper";
+import { generateResult, getSettlementResult } from "../../../src/helpers/result-helper";
 
 describe("result statistic: 100,000 times", () => {
     // arrange

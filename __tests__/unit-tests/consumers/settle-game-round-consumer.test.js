@@ -1,11 +1,11 @@
 import { stub } from "jest-micro-auto-stub";
 import { Core, Table } from "sc-game-base";
 
-import SettleGameRoundConsumer from "../../src/consumers/settle-game-round-consumer";
-import { card } from "../../src/helpers/card";
-import { getCards } from "../../src/helpers/result-helper";
+import SettleGameRoundConsumer from "../../../src/consumers/settle-game-round-consumer";
+import { card } from "../../../src/helpers/card";
+import { getCards } from "../../../src/helpers/result-helper";
 
-jest.mock("../../src/helpers/result-helper.js");
+jest.mock("../../../src/helpers/result-helper.js");
 describe("SettleGameRoundConsumer tests", () => {
     const definition = new Table.TableGameDefinition({ id: 1, name: "game name" });
     definition.choices = ["player", "banker", "big", "small", "tie", "playerPair", "bankerPair"];
