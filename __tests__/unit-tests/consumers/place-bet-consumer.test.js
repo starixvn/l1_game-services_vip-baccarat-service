@@ -71,7 +71,7 @@ describe("composeBettingTimeValidationCriteria tests", () => {
             // arrange
             gameData.gameConfigs.enabled = true;
             gameData.remainingTime = chance.integer({
-                min: gameDefinition.durations.placingBets + 1,
+                min: gameDefinition.durations.placingBet,
                 max: gameDefinition.durations.placingBets + gameDefinition.durations.dealCards,
             });
             const placeBetConsumer = new PlaceBetConsumer(gameDefinition, gameData);
@@ -94,7 +94,7 @@ describe("composeBettingTimeValidationCriteria tests", () => {
             gameData.gameConfigs.enabled = true;
             gameData.remainingTime = chance.integer({
                 min: 0,
-                max: gameDefinition.durations.lockingBet,
+                max: gameDefinition.durations.lockingBet + 1,
             });
             const placeBetConsumer = new PlaceBetConsumer(gameDefinition, gameData);
 
@@ -161,7 +161,7 @@ describe("composeBettingTimeValidationCriteria tests", () => {
             gameData.roundId = 1;
             gameData.gameConfigs.enabled = true;
             gameData.remainingTime = chance.integer({
-                min: gameDefinition.durations.lockingBet + 1,
+                min: gameDefinition.durations.lockingBet,
                 max: gameDefinition.durations.placingBets,
             });
             const placeBetConsumer = new PlaceBetConsumer(gameDefinition, gameData);

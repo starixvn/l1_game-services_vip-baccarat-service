@@ -17,11 +17,11 @@ export default class PlaceBetConsumer extends BasePlaceBetConsumer {
             },
             {
                 failure:
-                    this.gameData.remainingTime > this.definition.durations.placingBets && this.gameData.remainingTime <= dealCardsTime,
+                    this.gameData.remainingTime >= this.definition.durations.placingBets && this.gameData.remainingTime <= dealCardsTime,
                 notice: this.getNoticeObj(helpers.noticeHelper.cannotPlaceBet),
             },
             {
-                failure: this.gameData.remainingTime <= this.definition.durations.lockingBet || this.gameData.remainingTime > dealCardsTime,
+                failure: this.gameData.remainingTime < this.definition.durations.lockingBet || this.gameData.remainingTime > dealCardsTime,
                 notice: this.getNoticeObj(helpers.noticeHelper.placeBetNextRound),
             },
         ];
