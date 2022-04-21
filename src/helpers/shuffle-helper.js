@@ -1,18 +1,53 @@
 import Chance from "chance";
 import { randomInt } from "crypto";
+import Random from "random";
+import { MersenneTwister19937, Random as RandomJS } from "random-js";
+
 const chance = new Chance();
 
-const random1 = (array) => {
-    return chance.integer({ min: 0, max: array.length - 1 });
+export const mathRandom = () => {
+    return Math.random();
 };
 
-const random2 = (array) => {
-    return randomInt(array.length);
+const random1 = (max) => {
+    return Math.floor(mathRandom() * max);
 };
 
-const random = {
-    2: random1,
-    3: random2,
+const random2 = (max) => {
+    return chance.integer({ min: 0, max });
+};
+
+const random3 = (max) => {
+    return Random.int(0, max);
+};
+
+const random4 = (max) => {
+    const randomJS = new RandomJS(MersenneTwister19937.autoSeed());
+
+    return randomJS.integer(0, max);
+};
+
+const random5 = (max) => {
+    return randomInt(max + 1);
+};
+
+const random6 = (max) => {
+    const seed = Math.floor(mathRandom() * 100000);
+    const randomJS = new RandomJS(MersenneTwister19937.seed(seed));
+    return randomJS.integer(0, max);
+};
+
+const randomModes = {
+    2: [random1, random2, random3],
+    3: [random4, random5, random6],
+};
+
+const random = (mode, max) => {
+    const randomFunctions = randomModes[mode];
+    const selectedRandomMethodIndex = Math.floor(mathRandom() * randomFunctions.length);
+    const randomFunction = randomFunctions[selectedRandomMethodIndex];
+
+    return randomFunction(max);
 };
 
 const shuffle1 = (array) => {
@@ -28,7 +63,7 @@ const shuffle2 = (array, mode) => {
         let lastElementIndex = array.length - 1;
 
         while (lastElementIndex) {
-            const randomIndex = random[mode](array);
+            const randomIndex = random(mode, array.length - 1);
             lastElementIndex--;
             const lastElement = array[lastElementIndex];
 

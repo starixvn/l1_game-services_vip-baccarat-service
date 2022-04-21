@@ -94,7 +94,7 @@ describe("composeBettingTimeValidationCriteria tests", () => {
             gameData.gameConfigs.enabled = true;
             gameData.remainingTime = chance.integer({
                 min: 0,
-                max: gameDefinition.durations.lockingBet + 1,
+                max: gameDefinition.durations.lockingBet - 1,
             });
             const placeBetConsumer = new PlaceBetConsumer(gameDefinition, gameData);
 
