@@ -1,5 +1,5 @@
-import BaccaratGame from "../../src/helpers/baccarat-game";
-import { getCards } from "../../src/helpers/result-helper";
+import BaccaratGame from "../../../src/helpers/baccarat-game";
+import { getCards } from "../../../src/helpers/result-helper";
 
 describe("Baccarat game instance", () => {
     const baccaratGame = new BaccaratGame(getCards());

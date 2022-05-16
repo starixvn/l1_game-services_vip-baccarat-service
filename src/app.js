@@ -6,7 +6,12 @@ import { resultHelper } from "./helpers";
 import VipBaccaratContainerRegistry from "./vip-baccarat-container-registry";
 
 const run = async () => {
-    const definition = new Table.TableGameDefinition(gameSettings, resultHelper.generateResult, resultHelper.getSettlementResult);
+    const definition = new Table.TableGameDefinition(
+        gameSettings,
+        resultHelper.generateResult,
+        resultHelper.getSettlementResult,
+        resultHelper.generateRawResultForHash
+    );
     const gameData = new Table.TableGameData(gameSettings.durations.wholeRound);
 
     const container = new VipBaccaratContainerRegistry().register(appConfigs, definition, gameData);

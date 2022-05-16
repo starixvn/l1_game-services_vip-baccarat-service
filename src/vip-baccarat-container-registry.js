@@ -1,7 +1,7 @@
 import awilix from "awilix";
 import { Table } from "sc-game-base";
-import SettleGameRoundConsumer from "./consumers/settle-game-round-consumer";
-import { bets, rounds, tmpBets } from "./models/index";
+import { SettleGameRoundConsumer, RoundResultConsumer, PlaceBetConsumer } from "./consumers";
+import { bets, rounds, tmpBets, results } from "./models/index";
 import { Bot } from "./crons/index";
 
 const { asClass, asValue } = awilix;
@@ -14,6 +14,7 @@ export default class VipBaccaratContainerRegistry extends Table.TableContainerRe
             roundsRepository: asValue(rounds),
             betsRepository: asValue(bets),
             tempBetsRepository: asValue(tmpBets),
+            resultsRepository: asValue(results),
         });
     }
 
@@ -21,7 +22,9 @@ export default class VipBaccaratContainerRegistry extends Table.TableContainerRe
         super.registerConsumers();
 
         this.container.register({
+            placeBetConsumer: asClass(PlaceBetConsumer).singleton(),
             settleGameRoundConsumer: asClass(SettleGameRoundConsumer).singleton().proxy(),
+            roundResultConsumer: asClass(RoundResultConsumer).singleton(),
         });
     }
 

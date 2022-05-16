@@ -1,4 +1,4 @@
-import { getCardValue } from "../../src/helpers/card-helper";
+import { getCardValue } from "../../../src/helpers/card-helper";
 
 describe("get card value", () => {
     it("should return zero when input invalid card", () => {

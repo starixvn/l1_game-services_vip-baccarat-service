@@ -1,4 +1,4 @@
-import BaccaratPlayer from "../../src/helpers/baccarat-player";
+import BaccaratPlayer from "../../../src/helpers/baccarat-player";
 
 describe("Baccarat player instance", () => {
     const baccaratPlayer = new BaccaratPlayer();

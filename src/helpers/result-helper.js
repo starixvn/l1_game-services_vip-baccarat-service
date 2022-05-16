@@ -1,23 +1,18 @@
-import Chance from "chance";
-
 import BaccaratGame from "./baccarat-game";
 import * as BaseCard from "./card";
 import { getCardValue } from "./card-helper";
+import { shuffle } from "./shuffle-helper";
 
-const getCards = () => {
+const getCards = (randomMode = 1) => {
     let cards = [...BaseCard.card];
-    const chance = new Chance();
-
-    cards = chance.shuffle(cards);
-    cards = chance.shuffle(cards);
-    cards = chance.shuffle(cards);
-
+    cards = shuffle[randomMode](cards);
     return cards;
 };
 
-const generateResult = () => {
-    const cards = getCards();
-    const baccaratGame = new BaccaratGame(cards);
+const generateResult = (mode) => {
+    const selectedMode = mode >= 1 && mode <= 3 ? mode : 1;
+    const cards = getCards(selectedMode);
+    const baccaratGame = new BaccaratGame([...cards]);
     let action = "";
 
     do {
@@ -25,7 +20,7 @@ const generateResult = () => {
         baccaratGame[action]();
     } while (action !== BaccaratGame.Actions.finalComparison);
 
-    return { player: baccaratGame.player, banker: baccaratGame.banker };
+    return { player: baccaratGame.player, banker: baccaratGame.banker, cards: cards.slice(0, 6) };
 };
 
 const settlementRuleEntries = Object.entries({
@@ -86,4 +81,10 @@ const getSettlementResult = (roundResult) => {
     }, {});
 };
 
-export { getCards, generateResult, getSettlementResult };
+const generateRawResultForHash = ({ cards }) => {
+    let rawResult = "{";
+    rawResult += cards.map((card) => `${BaseCard.name[card.card]}${BaseCard.type[card.type]}`).join(" ") + "}";
+    return rawResult;
+};
+
+export { getCards, generateResult, getSettlementResult, generateRawResultForHash };
