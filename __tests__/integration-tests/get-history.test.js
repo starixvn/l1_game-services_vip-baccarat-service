@@ -22,6 +22,8 @@ export const getHistoryTest = () => {
                     tie: 0,
                     freeBet: false,
                     phien: 1190118,
+                    roundId: 1190118,
+                    paid: false,
                     currency: "$US",
                     name: "NormalUser",
                     odds: {
@@ -47,7 +49,9 @@ export const getHistoryTest = () => {
                     tie: 0,
                     betwin: 77,
                     freeBet: false,
+                    roundId: 1190119,
                     phien: 1190119,
+                    paid: false,
                     currency: "$US",
                     name: "NormalUser",
                     odds: {
