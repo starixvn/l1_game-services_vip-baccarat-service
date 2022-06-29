@@ -81,6 +81,7 @@ const userBetData = (uid) => {
         {
             freeBet: false,
             phien: 1190119,
+            roundId: 1190119,
             uid: uid,
             currency: "$US",
             memberId: 1,
@@ -102,6 +103,7 @@ const userBetData = (uid) => {
         {
             freeBet: false,
             phien: 1190118,
+            roundId: 1190118,
             uid: uid,
             currency: "$US",
             memberId: 1,
