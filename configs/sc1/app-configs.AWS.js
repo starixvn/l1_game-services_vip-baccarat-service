@@ -2,15 +2,15 @@ export default {
     hostingPort: 5000,
     apiSettings: {
         enabledApi: true,
-        apiUrl: "http://l1_game_api_local_3:5000",
-        authUrl: "http://l1_auth_api_local_3:5000",
+        apiUrl: "http://l1_game_api_AWS:5000",
+        authUrl: "http://l1_auth_api_AWS:5000",
         client: {
             id: "game-server",
             secret: "gameserver@20luminet&",
         },
         useAuthenticate: true,
-        requestTimeout: 10000,
-        placeBetTimeout: 4000,
+        placeBetTimeout: 4500,
+        requestTimeout: 10000, // 10s
         enabledApiLogs: true,
     },
     socketOptions: {
@@ -22,7 +22,7 @@ export default {
     },
     enabledLogs: true,
     database: {
-        url: "mongodb://lmn_backend:LmnBackend@10.10.50.12:39103,10.10.50.13:39103,10.10.50.14:39103/?replicaSet=L1pppLocal&appName=VIPBaccarat",
+        url: "mongodb://lmn_backend:Sb%7B5r%40Xy4X%256%28%24%5Bt%252HsOxJ%7CQt9jdR%26t@10.99.99.56:27101/?replicaSet=L1_SabaAWS&appName=VIPBaccarat",
         options: {
             dbName: "minigame",
             useNewUrlParser: true,
@@ -31,12 +31,12 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "https://13f39b8359404ed5aec23655e64ccf78@sentry.lumigame.com/2",
+        sentryUrl: "http://58fc00e79ab34a3bab04a79038760cb8@sentry.sabagame.com/8",
         logIdentifier: "vip-baccarat",
-        env: "LOCAL",
+        env: "AWS",
     },
     authenticateSettings: {
-        url: "http://l1_auth_api_local_3:5000",
+        url: "http://l1_auth_api_AWS:5000",
         id: "game-services",
         secret: "gameservices@20luminet&",
         requestTimeout: 10000,
@@ -44,24 +44,15 @@ export default {
         audiences: ["api", "admin-api"],
     },
     userServiceSettings: {
-        url: "http://l1_user_service_local_3:5000",
+        url: "http://localhost:8004/api",
     },
-    adminSecretKey: "asWDEerfOIdgsdqRTFabvmgh",
+    adminSecretKey: "asWDEer4yGdgsdqR4uqmKQZgh",
     enableCorsWs: true,
-    corsUrls: [
-        "http://localhost:7456",
-        "http://localhost:7000",
-        "http://localhost:3000",
-        "http://l1-games3.lumigame.com",
-        "https://l1-games3.lumigame.com",
-        "http://l1-admin3.lumigame.com",
-        "https://l1-admin3.lumigame.com",
-        "http://l1-m3.lumigame.com",
-        "https://l1-m3.lumigame.com",
-    ],
+    corsUrls: ["https://sc1-games.sportsfun.app", "https://sc1-adm.sportsfun.app"],
     metrics: {
         enable: true,
         secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df",
     },
     enableMsgpackParser: false,
+    chips: [5000, 2000, 1000, 500, 200, 100, 50, 20, 10],
 };

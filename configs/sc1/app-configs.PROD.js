@@ -71,4 +71,5 @@ export default {
         secretKey: "30d15293-c7de-4c77-9293-b85d6c5bfe1a",
     },
     enableMsgpackParser: true,
+    chips: [5000, 2000, 1000, 500, 200, 100, 50, 20, 10],
 };

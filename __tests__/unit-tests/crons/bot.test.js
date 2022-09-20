@@ -4,6 +4,7 @@ import { Core, Table } from "sc-game-base";
 
 import Bot from "../../../src/crons/bot";
 import gameSettings from "../../../src/game-settings";
+import appConfigs from "../../../src/app-configs";
 
 describe("bot test", () => {
     const definition = new Table.TableGameDefinition(gameSettings);
@@ -28,7 +29,7 @@ describe("bot test", () => {
 
     /** @type {mongoose.Model}*/
     const userInfosRepository = stubMongooseModelStupidly(mongoose.Model);
-    const baccaratBot = new Bot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
+    const baccaratBot = new Bot(definition, gameData, publisher, userInfosRepository, tempBetsRepository, appConfigs);
     const bot = {
         id: 1,
         name: "bot1",
