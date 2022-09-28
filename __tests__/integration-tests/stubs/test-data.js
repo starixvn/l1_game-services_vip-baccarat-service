@@ -25,6 +25,7 @@ const gameConfig = {
 const rounds = [
     {
         id: 1190119,
+        exchangeRateId: 1,
         result: {
             player: { card1: { card: 3, type: 2 }, card2: { card: 9, type: 1 }, card3: { card: 1, type: 0 } },
             banker: { card1: { card: 6, type: 3 }, card2: { card: 7, type: 1 }, card3: null },
@@ -42,6 +43,7 @@ const rounds = [
     },
     {
         id: 1190118,
+        exchangeRateId: 1,
         result: {
             player: { card1: { card: 6, type: 1 }, card2: { card: 0, type: 2 }, card3: null },
             banker: { card1: { card: 2, type: 2 }, card2: { card: 5, type: 0 }, card3: null },
@@ -59,6 +61,7 @@ const rounds = [
     },
     {
         id: 1190117,
+        exchangeRateId: 1,
         result: {
             player: { card1: { card: 5, type: 1 }, card2: { card: 8, type: 0 }, card3: null },
             banker: { card1: { card: 6, type: 1 }, card2: { card: 6, type: 3 }, card3: { card: 9, type: 3 } },
@@ -82,6 +85,7 @@ const userBetData = (uid) => {
             freeBet: false,
             roundId: 1190119,
             uid: uid,
+            operatorId: "OW",
             currency: "$US",
             playerId: 1,
             name: "NormalUser",
@@ -103,6 +107,7 @@ const userBetData = (uid) => {
             freeBet: false,
             roundId: 1190118,
             uid: uid,
+            operatorId: "OW",
             currency: "$US",
             playerId: 1,
             name: "NormalUser",
