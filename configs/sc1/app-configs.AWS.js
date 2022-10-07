@@ -9,7 +9,7 @@ export default {
             secret: "gameserver@20luminet&",
         },
         useAuthenticate: true,
-        placeBetTimeout: 4500,
+        placeBetTimeout: 4000,
         requestTimeout: 10000, // 10s
         enabledApiLogs: true,
     },
@@ -22,7 +22,7 @@ export default {
     },
     enabledLogs: true,
     database: {
-        url: "mongodb://lmn_backend:Sb%7B5r%40Xy4X%256%28%24%5Bt%252HsOxJ%7CQt9jdR%26t@10.99.99.56:27101/?replicaSet=L1_SabaAWS",
+        url: "mongodb://lmn_backend:Sb%7B5r%40Xy4X%256%28%24%5Bt%252HsOxJ%7CQt9jdR%26t@10.99.99.56:27101/?replicaSet=L1_SabaAWS&appName=VIPBaccarat",
         options: {
             dbName: "minigame",
             useNewUrlParser: true,
@@ -54,4 +54,5 @@ export default {
         secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df",
     },
     enableMsgpackParser: false,
+    chips: [5000, 2000, 1000, 500, 200, 100, 50, 20, 10],
 };
