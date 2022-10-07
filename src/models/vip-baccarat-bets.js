@@ -20,7 +20,7 @@ const bet = {
     freeBet: { type: Boolean, default: false },
 
     playerId: { type: Number },
-    operatorId: { type: String, required: true },
+    operatorId: { type: String },
     roundId: { type: Number, default: 0, required: true },
     paid: { type: Boolean, default: false },
 };
@@ -29,9 +29,8 @@ const bets = mongoose.model(
     "VipBaccarat_cuoc",
     new mongoose.Schema({
         ...bet,
-        currency: { type: String, required: true },
+        currency: { type: String },
         rate: { type: Number, required: true },
-        operatorId: { type: String, required: true },
     })
 );
 const tmpBets = mongoose.model("VipBaccarat_tmpcuoc", new mongoose.Schema(bet));
