@@ -19,7 +19,7 @@ const bet = {
     siteId: { type: String },
     freeBet: { type: Boolean, default: false },
 
-    playerId: { type: Number },
+    playerId: { type: String },
     operatorId: { type: String },
     roundId: { type: Number, default: 0, required: true },
     paid: { type: Boolean, default: false },
