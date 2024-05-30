@@ -65,9 +65,13 @@ describe("Baccarat game instance", () => {
         });
 
         describe("player has 3 cards", () => {
+            beforeEach(() => {
+                jest.clearAllMocks();
+            });
+
             it("should return bankerReceiveThirdCard when checkBankerHasReceiveThirdCard return true", () => {
                 // assert
-                spyOn(baccaratGame, "checkBankerHasReceiveThirdCard").and.callFake(() => true);
+                jest.spyOn(baccaratGame, "checkBankerHasReceiveThirdCard").mockReturnValueOnce(true);
 
                 baccaratGame.player.card1 = { card: 3, type: 1 };
                 baccaratGame.player.card2 = { card: 4, type: 1 };
@@ -80,7 +84,7 @@ describe("Baccarat game instance", () => {
 
             it("should return finalComparison when checkBankerHasReceiveThirdCard return false", () => {
                 // assert
-                spyOn(baccaratGame, "checkBankerHasReceiveThirdCard").and.callFake(() => false);
+                jest.spyOn(baccaratGame, "checkBankerHasReceiveThirdCard").mockReturnValueOnce(false);
 
                 baccaratGame.player.card1 = { card: 3, type: 1 };
                 baccaratGame.player.card2 = { card: 4, type: 1 };

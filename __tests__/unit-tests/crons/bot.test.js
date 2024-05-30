@@ -1,4 +1,4 @@
-import { stub, stubMongooseModelStupidly } from "jest-micro-auto-stub";
+import { stub, stubMongoose } from "jest-micro-auto-stub";
 import mongoose from "mongoose";
 import { Core, Table } from "sc-game-base";
 
@@ -25,10 +25,10 @@ describe("bot test", () => {
     const publisher = stub(Core.BaseEventPublishers.BaseEventPublisher);
 
     /** @type {mongoose.Model}*/
-    const tempBetsRepository = stubMongooseModelStupidly(mongoose.Model);
+    const tempBetsRepository = stubMongoose(mongoose.Model);
 
     /** @type {mongoose.Model}*/
-    const userInfosRepository = stubMongooseModelStupidly(mongoose.Model);
+    const userInfosRepository = stubMongoose(mongoose.Model);
     const baccaratBot = new Bot(definition, gameData, publisher, userInfosRepository, tempBetsRepository, appConfigs);
     const bot = {
         id: 1,
@@ -38,6 +38,7 @@ describe("bot test", () => {
         choices: [],
         remainTickets: 3,
         totalBet: 0,
+        betOnChoices: {},
     };
 
     it("_inherit Table.Crons.TableGameBot", () => {
@@ -89,7 +90,8 @@ describe("bot test", () => {
     });
 
     it("updateBotInRoomData_always_calls super.updateBotInRoomData", () => {
-        spyOn(Table.Crons.TableGameBot.prototype, "updateBotInRoomData");
+        baccaratBot.resetAllBets();
+        jest.spyOn(Table.Crons.TableGameBot.prototype, "updateBotInRoomData");
 
         // act
         baccaratBot.updateBotInRoomData(bot, "player", 10, 100);
@@ -100,8 +102,8 @@ describe("bot test", () => {
 
     it("_resetAllBotData_always_calls specific functions", () => {
         // arrange
-        spyOn(Table.Crons.TableGameBot.prototype, "resetAllBotData");
-        spyOn(baccaratBot, "resetAllBets");
+        jest.spyOn(Table.Crons.TableGameBot.prototype, "resetAllBotData");
+        jest.spyOn(baccaratBot, "resetAllBets");
 
         // act
         baccaratBot.resetAllBotData();
