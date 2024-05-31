@@ -3,16 +3,21 @@ import { socketOptions } from "./stubs/test-data";
 import { initUserSession } from "./init-user-session";
 
 export const signinTest = () => {
+    let driver;
+    beforeAll(() => {
+        driver = new GameClientDriver(socketOptions, initUserSession(normalUser));
+    });
+
+    afterAll(() => {
+        driver.close();
+    });
+
     describe("signin", () => {
-        it("should receive signed in response", (done) => {
+        it("should receive signed in response", async () => {
             // Arrange & Act
-            const normalUserClientDriver = new GameClientDriver(socketOptions, initUserSession(normalUser));
 
             // Assert
-            normalUserClientDriver.handleSignedInEvent(() => {
-                normalUserClientDriver.close();
-                done();
-            });
+            await driver.handleSignedInEvent();
         });
     });
 };
