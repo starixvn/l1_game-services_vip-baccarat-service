@@ -5,8 +5,6 @@ import { startTrace } from "sc-instrument";
 startTrace(appConfigs.otel?.enabled, appConfigs.otel?.endpoint, appConfigs.otel?.system, appConfigs.sentry.env, gameSettings.name);
 
 import { Core, Table } from "sc-game-base";
-
-import gameSettings from "./game-settings";
 import { resultHelper } from "./helpers";
 import VipBaccaratContainerRegistry from "./vip-baccarat-container-registry";
 
