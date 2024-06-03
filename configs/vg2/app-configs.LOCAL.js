@@ -55,7 +55,7 @@ export default {
     chips: [20_000_000, 10_000_000, 5_000_000, 2_000_000, 1_000_000, 500_000, 200_000, 100_000],
     otel: {
         system: "VG",
-        enabled: false,
+        enabled: true,
         endpoint: "http://10.10.50.69:4318/v1/traces",
     },
 };
