@@ -24,7 +24,9 @@ export default class BetEventMetric {
             });
         }
 
-        const latency = Date.now() - Date.parse(clientSentTime);
+        const parsedClientTime = Date.parse(clientSentTime);
+        const clientTime = isNaN(parsedClientTime) ? Date.now() : parsedClientTime;
+        const latency = Date.now() - clientTime;
         this.baseMetrics.socketIOMetrics.metrics.betEventLatency.observe(latency);
     }
 
