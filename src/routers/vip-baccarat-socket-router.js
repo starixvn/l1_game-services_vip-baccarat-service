@@ -4,8 +4,8 @@ export default class VipBaccaratSocketRouter extends Core.Routers.BaseSocketRout
     init(socketClient) {
         super.init(socketClient);
 
-        this.socketClient.on("ping", (callback) => {
-            callback();
+        this.socketClient.on("ping", (ack) => {
+            ack({ received: true });
         });
     }
 }
