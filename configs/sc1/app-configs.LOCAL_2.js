@@ -51,7 +51,7 @@ export default {
         enable: true,
         secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df",
     },
-    enableMsgpackParser: false,
+    enableMsgpackParser: true,
     chips: [5000, 2000, 1000, 500, 200, 100, 50, 20, 10],
     otel: {
         system: "SG",
