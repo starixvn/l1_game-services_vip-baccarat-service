@@ -1,5 +1,7 @@
+import hourlySummaries from "./hourly-summaries";
 import { bets, tmpBets } from "./vip-baccarat-bets";
-import rounds from "./vip-baccarat-rounds";
 import results from "./vip-baccarat-results";
+import rounds from "./vip-baccarat-rounds";
 
-export { rounds, bets, tmpBets, results };
+export { bets, hourlySummaries, results, rounds, tmpBets };
+

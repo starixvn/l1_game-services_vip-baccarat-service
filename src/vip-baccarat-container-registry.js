@@ -1,10 +1,11 @@
 import awilix from "awilix";
 import { Table } from "sc-game-base";
-import { SettleGameRoundConsumer, RoundResultConsumer, PlaceBetConsumer } from "./consumers";
-import { bets, rounds, tmpBets, results } from "./models/index";
+import { PlaceBetConsumer, RoundResultConsumer, SettleGameRoundConsumer } from "./consumers";
 import { Bot, VipBaccaratProcessBetQueue } from "./crons/index";
-import { VipBaccaratSocketRouter } from "./routers";
 import { BetEventMetric } from "./metrics";
+import { bets, hourlySummaries, results, rounds, tmpBets } from "./models/index";
+import RTPQuery from "./query-apis/rtp-query";
+import { VipBaccaratSocketRouter } from "./routers";
 
 const { asClass, asValue } = awilix;
 
@@ -17,6 +18,7 @@ export default class VipBaccaratContainerRegistry extends Table.TableContainerRe
             betsRepository: asValue(bets),
             tempBetsRepository: asValue(tmpBets),
             resultsRepository: asValue(results),
+            hourlySummariesRepository: asValue(hourlySummaries),
         });
     }
 
@@ -47,6 +49,14 @@ export default class VipBaccaratContainerRegistry extends Table.TableContainerRe
         super.registerRouters();
         this.container.register({
             socketRouter: asClass(VipBaccaratSocketRouter).proxy(),
+        });
+    }
+
+    registerApis() {
+        super.registerApis();
+
+        this.container.register({
+            rtpQuery: asClass(RTPQuery).singleton(),
         });
     }
 }
