@@ -5,7 +5,7 @@ import { Bot, VipBaccaratProcessBetQueue } from "./crons/index";
 import { BetEventMetric } from "./metrics";
 import { bets, hourlySummaries, results, rounds, tmpBets } from "./models/index";
 import RTPQuery from "./query-apis/rtp-query";
-import { VipBaccaratSocketRouter } from "./routers";
+import { HttpRouter, VipBaccaratSocketRouter } from "./routers";
 
 const { asClass, asValue } = awilix;
 
@@ -49,6 +49,7 @@ export default class VipBaccaratContainerRegistry extends Table.TableContainerRe
         super.registerRouters();
         this.container.register({
             socketRouter: asClass(VipBaccaratSocketRouter).proxy(),
+            httpRouter: asClass(HttpRouter),
         });
     }
 
