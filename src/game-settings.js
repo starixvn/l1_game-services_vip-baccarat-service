@@ -4,7 +4,7 @@ export default {
     durations: {
         wholeRound: 45,
         placingBets: 30,
-        lockingBet: 5,
+        lockingBet: 3,
         dealCards: 2,
     },
     choices: ["player", "banker", "big", "small", "tie", "playerPair", "bankerPair"],
